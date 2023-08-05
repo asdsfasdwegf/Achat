@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .jumbotron{
+        padding: 10px;
+        margin-bottom: 0px;
+        font-size: 30px;
+        color: #00ff00
+
+
+        }
+    </style>
+<a class="jumbotron" href="">{{ post.user.username }}</a>
+<h6>{{ post.update }}</h6>
+    <style>
+        .card{
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        background-color: #6ea7dd
+
+
+        }
+    </style>
+<p class="card">{{ post.body }}</p>
+{% endblock %}
