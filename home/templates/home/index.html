@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-Index page
+    <style>
+        .card{
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        background-color: #6ea7dd
+
+
+        }
+    </style>
+
+    {% for post in post %}
+<div class="card">
+<h3>{{ post.user }} :</h3>
+<a href="{% url 'home:post_detail' post.id post.slug %}" class="card-body">{{ post.body }}</a>
+    </div>{% endfor %}
+
+
 {% endblock %}

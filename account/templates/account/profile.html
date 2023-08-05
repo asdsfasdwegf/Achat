@@ -1,4 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 class="text-center">{{ user.username }}</h2>n
+    <style>
+        .text-center{
+        color: #00ff00
+        }
+    </style>
+<h1 class="text-center" style="color=green ">{{ user.username }}</h1>
+    <style>
+        .card{
+        font-size: 15px;
+        background-color: #6ea7dd
+
+
+        }
+    </style>
+<div class="card">
+
+    {% for post in post %}
+    {% if user.username == post.user.username %}
+
+<a href="{% url 'home:post_detail' post.id post.slug %}" class="card-body">{{ post.body |truncatewords:8  }}</a>
+{% endif %}
+{% endfor %}
 {% endblock %}
+        </div>
