@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from home.models import Post
 
 class UserRegisterView(View):
     form_class = UserRegisterationForm
@@ -63,5 +62,5 @@ class UserLogoutView(LoginRequiredMixin, View):
 class UserProfileView(LoginRequiredMixin,View):
     def get(self, request, user_id):
         user = User.objects.get(pk=user_id)
-        post = Post.objects.all()
+        post = user.posts.all()
         return render(request, 'account/profile.html', {'user':user, 'post':post})

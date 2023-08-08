@@ -6,6 +6,9 @@
         }
     </style>
 <h1 class="text-center" style="color=green ">{{ user.username }}</h1>
+{% if request.user.id == user.id%}
+    <a href="{% url 'home:post_create' %}" class="btn btn-primary">Create</a>
+{% endif %}
     <style>
         .card{
         font-size: 15px;
@@ -22,5 +25,7 @@
 <a href="{% url 'home:post_detail' post.id post.slug %}" class="card-body">{{ post.body |truncatewords:8  }}</a>
 {% endif %}
 {% endfor %}
+</div>
+
 {% endblock %}
-        </div>
+
