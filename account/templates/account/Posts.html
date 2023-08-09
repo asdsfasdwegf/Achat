@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for post in post %}
+<div class="card">
+    {% if user.username == post.user.username %}
+<a href="{% url 'home:post_detail' post.id post.slug %}" class="card-body">{{ post.body |truncatewords:8  }}</a>
+{% endif %}
+{% endfor %}
+{% endblock %}
