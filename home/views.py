@@ -13,7 +13,8 @@ class HomeView(View):
 class PostDetailView(View):
     def get(self, request, post_id, post_slug):
         posts = Post.objects.get(pk=post_id, slug=post_slug)
-        return render(request, 'home/detail.html', {'post': posts})
+        comments = posts.comments.filter(is_reply=False)
+        return render(request, 'home/detail.html', {'post': posts,'comment':comments})
 
 class PostDeleteView(LoginRequiredMixin, View):
     def get(self, request, post_id):
