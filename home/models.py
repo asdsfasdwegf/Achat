@@ -14,6 +14,9 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.slug} {self.update}'
 
+    def likes(self):
+        return self.plike.count()
+
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ucomment')
@@ -25,3 +28,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.user} - {self.body[:30]}'
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ulike')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='plike')
+
+    def __str__(self):
+        return f'{self.user} like {self.post.slug}'

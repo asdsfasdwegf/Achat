@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+<form action="" method="get">
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form><br></br>
     <style>
         .card{
         padding: 10px;
         margin-bottom: 20px;
         font-size: 20px;
-        background-color: #6ea7dd
+        background-color: #f69feb
 
 
         }
